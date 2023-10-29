@@ -1,31 +1,26 @@
-% Create a figure and axes with an equirectangular projection
 figure;
 ax = worldmap('World');
 framem on;
 gridm off;
 
-% Customize the map background
-setm(ax, 'FFaceColor', 'w'); % Set the oceans to white
+setm(ax, 'FFaceColor', 'w'); % oceans = white
 setm(ax, 'GColor', 'k');
-setm(ax, 'MeridianLabel', 'off'); % Turn off meridian labels
-setm(ax, 'ParallelLabel', 'off'); % Turn off parallel labels
+setm(ax, 'MeridianLabel', 'off'); 
+setm(ax, 'ParallelLabel', 'off'); 
 
-% Add coastlines with grey fill
 load coastlines;
-patchm(coastlat, coastlon, [0.7 0.7 0.7]); % Make continents grey
+patchm(coastlat, coastlon, [0.7 0.7 0.7]); % continents = gray
 
-% Define the 5 arbitrary points (latitude and longitude pairs)
-points = [
-    40, -100; % Point 1
-    0, 0;     % Point 2
-    10, 20;   % Point 3
-    -30, 60;  % Point 4
-    -20, -80; % Point 5
-];
+filename = 'CMap_fig1.xlsx';
+dataTable = readtable(filename);
+lat = table2array(dataTable(:, 5));
+lon = table2array(dataTable(:, 6));
+elbert = table2array(dataTable(:, 8));
 
-% Plot the points on the map with filled black dots
-for i = 1:size(points, 1)
-    lat = points(i, 1);
-    lon = points(i, 2);
-    plotm(lat, lon, 'o', 'MarkerSize', 6, 'MarkerFaceColor', 'k', 'MarkerEdgeColor', 'k');
+for i = 1:size(lat)
+    if elbert(i) == 1
+        plotm(lat(i), lon(i), 'o', 'MarkerSize', 8, 'MarkerFaceColor', [0.35 0.35 0.35], 'MarkerEdgeColor', 'k');
+    else
+        plotm(lat(i), lon(i), 'o', 'MarkerSize', 8, 'MarkerFaceColor', [0.8 0 0], 'MarkerEdgeColor', 'k');
+    end
 end
