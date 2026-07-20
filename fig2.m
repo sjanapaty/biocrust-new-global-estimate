@@ -89,7 +89,7 @@ bootstrap_sample_averages_c_extrf = mean(bootstrap_samples_c_extrf, 2);
 bootstrap_sample_averages_c_des= mean(bootstrap_samples_c_des, 2);
 bootstrap_sample_averages_c_step= mean(bootstrap_samples_c_step, 2);
 bootstrap_sample_averages_c_tropf= mean(bootstrap_samples_c_tropf, 2);
-bootstrap_sample_averages_c_tund= mean(bootstrap_samples_c_tropf, 2);
+bootstrap_sample_averages_c_tund= mean(bootstrap_samples_c_tund, 2);
 bootstrap_sample_averages_n = mean(bootstrap_samples_n, 2);
 
 figure;
